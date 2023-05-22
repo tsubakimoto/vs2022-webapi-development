@@ -1,4 +1,12 @@
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using VS2022WebApiDevelopment.Data;
+using VS2022WebApiDevelopment;
+
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddDbContext<VS2022WebApiDevelopmentContext>(options =>
+    options.UseSqlite(builder.Configuration.GetConnectionString("VS2022WebApiDevelopmentContext") ?? throw new InvalidOperationException("Connection string 'VS2022WebApiDevelopmentContext' not found.")));
 
 // Add services to the container.
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -35,6 +43,8 @@ app.MapGet("/weatherforecast", () =>
 })
 .WithName("GetWeatherForecast")
 .WithOpenApi();
+
+app.MapContactEndpoints();
 
 app.Run();
 

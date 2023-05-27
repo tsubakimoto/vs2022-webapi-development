@@ -1,0 +1,23 @@
+﻿@VS2022WebApiDevelopment_HostAddress = https://localhost:7061
+
+GET {{VS2022WebApiDevelopment_HostAddress}}/weatherforecast
+
+###
+
+GET {{VS2022WebApiDevelopment_HostAddress}}/api/Contact/
+
+###
+
+@name = Yuta Matsumura
+
+POST {{VS2022WebApiDevelopment_HostAddress}}/api/Contact/
+Content-Type: application/json
+Accept: application/json
+
+{
+  "name": "{{name}}",
+  "email": "yuta@example.com",
+  "phone": "090xxxxxxxx"
+}
+
+###
